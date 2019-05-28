@@ -48,3 +48,10 @@ tests:
 ~~~~
       java -jar simple-restful-api-load-tester-1.0-jar-with-dependencies.jar
 ~~~~
+
+## Statistics
+
+
+Basic statistics for executions are logged into ./logs/stats.log
+
+

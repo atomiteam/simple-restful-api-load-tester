@@ -1,4 +1,4 @@
-package com.atomiteam.load.executor;
+package com.atomiteam.load.agents;
 
 import java.io.InputStream;
 import java.io.OutputStream;
