@@ -7,7 +7,7 @@ It operates on top a YAML configuration file which needs to reside in the curren
 
 A sample file YAML content and description of its elements is given below.
 
-~~~~
+```yml
 # This says how many agents should be waked up
 agents: 2
 # Ramp up duration between agents
@@ -35,7 +35,16 @@ tests:
      headers:
        content-type: application/json 
        Authorization: Bearer ${agentContext.executions.auth.access_token}     
+```
 
 
+## Steps to execute a test run
 
+* Build the package by Maven
+* Copy Test.yml and jar file to a folder
+* Play with Test.yml as you need
+* Execute the following command
+
+~~~~
+      java -jar simple-restful-api-load-tester-1.0-jar-with-dependencies.jar
 ~~~~
