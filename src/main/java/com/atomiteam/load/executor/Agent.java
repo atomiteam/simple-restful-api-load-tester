@@ -42,9 +42,9 @@ public class Agent implements Runnable {
 	public void run() {
 		Random random = new Random();
 
-		for (int testIndex = 0; testIndex < globalContext.getTests().getTests().size(); testIndex++) {
+		for (int testIndex = 0; testIndex < globalContext.getConfiguration().getTests().size(); testIndex++) {
 
-			Test test = globalContext.getTests().getTests().get(testIndex);
+			Test test = globalContext.getConfiguration().getTests().get(testIndex);
 
 			for (int iteration = 0; iteration < test.getIterations(); iteration++) {
 				if (LOGGER.isDebugEnabled())

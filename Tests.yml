@@ -1,7 +1,9 @@
-paralellism: 1000
+paralellism: 2
 wait: 1000
+variables:
+    host: https://myapihost.com/
 tests:
-   - url: https://somehost/someapi/oauth/token
+   - url: ${globalContext.configuration.variables.host}/oauth/token
      iterations: 1
      wait: 1000
      id: auth
@@ -9,8 +11,8 @@ tests:
      headers:
        content-type: application/json 
      body: '{"client_id": "admin", "client_secret": "secret", "grant_type": "client_credentials"}'
-   - url: https://somehost/someapi/books
-     iterations: 1000
+   - url: ${globalContext.configuration.variables.host}/v3/users
+     iterations: 5
      wait: 30000
      method: GET
      headers:
