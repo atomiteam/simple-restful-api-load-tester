@@ -1,0 +1,19 @@
+paralellism: 1000
+wait: 1000
+tests:
+   - url: https://somehost/someapi/oauth/token
+     iterations: 1
+     wait: 1000
+     id: auth
+     method: POST
+     headers:
+       content-type: application/json 
+     body: '{"client_id": "admin", "client_secret": "secret", "grant_type": "client_credentials"}'
+   - url: https://somehost/someapi/books
+     iterations: 1000
+     wait: 30000
+     method: GET
+     headers:
+       content-type: application/json 
+       Authorization: Bearer ${agentContext.executions.auth.access_token}     
+

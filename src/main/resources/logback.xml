@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_DIR" value="logs" />
+	<property name="LOG_FILE" value="tester.log" />
+	<property name="LOG_PATTERN"
+		value="%d{yyyy-MM-dd HH:mm:ss} %-5level [%logger|%thread] %logger - %msg %n" />
+
+	<property name="STAT_FILE" value="stats.log" />
+	<property name="STAT_PATTERN"
+		value="%msg %n" />
+
+
+	<appender name="ROLLING-LOG-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}</file>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_DIR}/${LOG_FILE}_%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>10GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="ROLLING-STAT-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${STAT_FILE}</file>
+		<encoder>
+			<pattern>${STAT_PATTERN}</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_DIR}/${STAT_FILE}_%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>10GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="ASYNC-LOG-APPENDER"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLLING-LOG-APPENDER" />
+	</appender>
+	
+	<appender name="ASYNC-STAT-APPENDER"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLLING-STAT-APPENDER" />
+	</appender>
+	
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+	
+
+	<logger name="STAT" level="debug">
+		<appender-ref ref="ASYNC-STAT-APPENDER" />
+	</logger>
+
+
+	<logger name="com.atomiteam" level="INFO">
+		<appender-ref ref="ASYNC-STAT-APPENDER" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+
+	<root level="INFO">
+		<appender-ref ref="ASYNC-FILE-APPENDER" />
+	</root>
+
+</configuration>
