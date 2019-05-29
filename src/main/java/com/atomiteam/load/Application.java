@@ -10,7 +10,7 @@ import com.atomiteam.load.util.ConfigReader;
 
 /**
  * 
- * This is a lightweight RESTful API testing tool. 
+ * This is a lightweight RESTful API load testing tool. 
  * 
  * Steps to execute a test run
  * 		Build the application with Maven
