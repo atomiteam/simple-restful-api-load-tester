@@ -86,7 +86,7 @@ public class Agent implements Runnable {
 
 						successCount++;
 						STAT.warn(String.format("%4s %6d %6d %6d %4d %s", Thread.currentThread().getId(), this.total,
-								iteration, taken, responseCode, test.getUrl()));
+								iteration, taken, responseCode, url));
 
 						int randomWait = Math.abs(random.nextInt(test.getWait())) + test.getWait();
 						Thread.sleep(randomWait);

@@ -1,4 +1,4 @@
-paralellism: 2
+agents: 2
 wait: 1000
 variables:
     host: https://myapihost.com/
